@@ -1,18 +1,6 @@
 # https://github.com/peterbraden/node-opencv
 # TODO: Test, Refactor, Credits, etc.
 
-WebSocketServer = require 'ws'
-    .Server
-
-wss = new WebSocketServer { port: 8080 }
-    .on 'connection', (ws) ->
-        ws.on 'message', (message) ->
-
-            image = faceDetection message
-
-            ws.send image
-            return
-
 
 # TODO: Test after opencv installs
 cv = require 'opencv'
@@ -39,3 +27,31 @@ faceDecection = (image) ->
 
         return
     return
+
+
+WebSocketServer = require 'ws'
+    .Server
+
+wss = new WebSocketServer { port: 8080 }
+    .on 'connection', (ws) ->
+        ws.on 'message', (message) ->
+
+            image = faceDetection message
+
+            ws.send image
+            return
+
+
+
+
+
+
+# cv.readImage("./examples/files/mona.png", function(err, im){
+#   im.detectObject(cv.FACE_CASCADE, {}, function(err, faces){
+#     for (var i=0;i<faces.length; i++){
+#       var x = faces[i]
+#       im.ellipse(x.x + x.width/2, x.y + x.height/2, x.width/2, x.height/2);
+#     }
+#     im.save('./out.jpg');
+#   });
+# })

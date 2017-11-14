@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "opencv": "3.2.0",
     "ws": "^0.8.0"
   },
   "devDependencies": {
